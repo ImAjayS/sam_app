@@ -1,11 +1,24 @@
 Rails.application.routes.draw do
+  get 'users/new'
+
   root 'static_pages#home'
+#root_path -> '/'
+#root_url  -> 'http://localhost:3000/'
 
-  get 'static_pages/help'
+  get 'help' => 'static_pages#help'
+#help_path -> '/help'
+#help_url  -> 'http://localhost:3000/help'
 
-  get 'static_pages/about'
+  get 'about' => 'static_pages#about'
+#about_path -> '/about'
+#about_url  -> 'http://localhost:3000/about'
 
- get 'static_pages/contact'
+ get 'contact' => 'static_pages#contact'
+#contact_path -> '/'
+#contact_url  -> 'http://localhost:3000/contact'
+
+ get 'signup' => 'users#new'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
