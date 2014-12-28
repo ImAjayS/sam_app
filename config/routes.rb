@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 #contact_url  -> 'http://localhost:3000/contact'
 
  get 'signup' => 'users#new'
+ resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
