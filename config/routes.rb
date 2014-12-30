@@ -1,24 +1,19 @@
 Rails.application.routes.draw do
-  get 'users/new'
-
   root 'static_pages#home'
-#root_path -> '/'
-#root_url  -> 'http://localhost:3000/'
 
   get 'help' => 'static_pages#help'
-#help_path -> '/help'
-#help_url  -> 'http://localhost:3000/help'
 
   get 'about' => 'static_pages#about'
-#about_path -> '/about'
-#about_url  -> 'http://localhost:3000/about'
 
- get 'contact' => 'static_pages#contact'
-#contact_path -> '/'
-#contact_url  -> 'http://localhost:3000/contact'
+  get 'contact' => 'static_pages#contact'
 
- get 'signup' => 'users#new'
- resources :users
+  get 'signup' => 'users#new'
+ 
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
+
+  resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
