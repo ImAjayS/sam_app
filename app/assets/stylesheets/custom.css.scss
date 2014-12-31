@@ -193,4 +193,17 @@ input {
 	margin-left: 0;
 }
 
+/* Users index */
+
+.users1 {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+  li {
+    overflow: auto;
+    padding: 10px 0px 10px 0px;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}
+
 }
