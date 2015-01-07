@@ -9,7 +9,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   def new
@@ -52,14 +53,6 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)
-    end
-
-    def logged_in_user
-	unless logged_in?
-		store_location
-		flash[:danger] = "Please log in to continue"
-		redirect_to login_url
-	end
     end
 
     def correct_user

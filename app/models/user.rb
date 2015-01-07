@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
    validates :email, presence: true, length: { maximum: 255 }, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }, uniqueness: {case_sensitive: false }
    has_secure_password
    validates :password, length: { minimum: 6 }, allow_blank: true
+   has_many :microposts, dependent: :destroy
 
    def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -54,6 +55,10 @@ class User < ActiveRecord::Base
     reset_sent_at < 2.hours.ago
    end
 
+   def feed
+	Micropost.where("user_id = ?", id)
+   end
+   
    private
 
     # Converts email to all lower-case.
