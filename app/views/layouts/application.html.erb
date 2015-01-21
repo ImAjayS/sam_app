@@ -16,6 +16,14 @@
             <% end %>
 
       <%= yield %>
+	<script src=”http://platform.twitter.com/anywhere.js?id=pNxLvLAdrgPoLVB2OSYVLwnTR&v=1″ type=”text/javascript”>
+	</script>
+	<span id=”login”></span>
+	    <script type=”text/javascript”>
+    twttr.anywhere(function (T) {
+    T(“#login”).connectButton();
+    });
+    </script>
 	<%= render 'layouts/footer' %>
 	<%= debug(params) if Rails.env.development? %>
     </div>
